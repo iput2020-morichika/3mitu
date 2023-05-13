@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5; URL="http://10.192.137.111:5000/>
+    <title>3密Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    {% if dht11.temp >= 30.0 and dht11.hum >= 70.0 %}
+       <div class="red_leftbox">
+         <div class="maincircle">危険</div>
+       </div>
+    {% elif dht11.temp >= 28.0 and dht11.hum >= 65.0 %}
+      <div class="yellow_leftbox">
+        <div class="maincircle">注意</div>
+      </div>
+    {% else %}
+      <div class="leftbox2">
+        <div class="maincircle">良好</div>
+      </div>
+    {% endif %}
+
+    {% if dht11.temp >= 30.0 %}
+      <div class="red_circle1">{{ dht11.temp }}度</div>
+    {% elif dht11.temp >= 28.0 %}
+      <div class="yellow_circle1">{{ dht11.temp }}度</div>
+    {% else %}
+      <div class="circle1">{{ dht11.temp }}度</div>
+    {% endif %}
+
+    {% if dht11.hum >= 70.0 %}
+      <div class="red_circle2">{{ dht11.hum }}%</div>
+    {% elif dht11.hum >= 65.0 %}
+      <div class="yellow_circle2">{{ dht11.hum }}%</div>
+    {% else %}
+      <div class="circle2">{{ dht11.hum }}%</div>
+    {% endif %}
+
+    <div class="circle3">騒音度</div>
+    <div class="border"></div>
+
+    <!--<div class="door">ドア開閉状況：　</div>-->
+  </body>
+</html>
